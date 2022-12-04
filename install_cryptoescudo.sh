@@ -56,12 +56,14 @@ EOF
 sudo chmod +x $DAEMONQUERY
 
 # Download chain up-to-date
+
 sudo tee "$DAEMONCHAINUPD" > /dev/null <<EOF
 cd $DAEMONBASE
 
-./kill_daemon.sh
-
+# download
 wget -O cryptoescudo.tar.gz  https://cryptoescudo.work/getchain --no-check-certificate
+
+./kill_daemon.sh
 
 # remove old data
 rm -Rf data/blocks/ data/chainstate/ data/database/
@@ -70,6 +72,7 @@ rm -Rf data/blocks/ data/chainstate/ data/database/
 tar -xf cryptoescudo.tar.gz
 
 ./start_daemon.sh
+
 
 EOF
 sudo chmod +x $DAEMONCHAINUPD
