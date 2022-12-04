@@ -63,7 +63,7 @@ cd $DAEMONBASE
 # download
 #wget -O cryptoescudo.tar.gz  https://cryptoescudo.work/getchain --no-check-certificate
 SHAREID=1tlrB2WCa4ijeUan-hRc-kaRyZbER1k8n
-CONFIRM=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=$SHAREID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
+CONFIRM="`wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=$SHAREID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p'`"
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$SHAREID" -O cryptoescudo.tar.gz 
 rm -rf /tmp/cookies.txt
 
