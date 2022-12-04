@@ -73,7 +73,6 @@ tar -xf cryptoescudo.tar.gz
 
 ./start_daemon.sh
 
-
 EOF
 sudo chmod +x $DAEMONCHAINUPD
 
