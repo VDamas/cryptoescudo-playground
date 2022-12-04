@@ -63,8 +63,7 @@ cd $DAEMONBASE
 # download
 #wget -O cryptoescudo.tar.gz  https://cryptoescudo.work/getchain --no-check-certificate
 SHAREID=1tlrB2WCa4ijeUan-hRc-kaRyZbER1k8n
-wget -O cryptoescudo.tar.gz 'https://docs.google.com/uc?export=download&id=$($SHAREID)' --no-check-certificate  
-
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=$SHAREID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$SHAREID" -O cryptoescudo.tar.gz  && rm -rf /tmp/cookies.txt
 ./kill_daemon.sh
 
 # remove old data
