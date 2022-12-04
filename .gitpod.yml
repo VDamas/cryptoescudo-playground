@@ -1,6 +1,6 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - name: cryptoescudod
+  - name: main
     init: chmod +x ./install_cryptoescudo.sh && ./install_cryptoescudo.sh
     command: cryptoescudo/cryptoescudod --datadir=/workspace/cryptoescudo-playground/cryptoescudo/data/ --daemon
   - name: debug.log
