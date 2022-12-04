@@ -65,5 +65,5 @@ listen=1
 txindex=1
 EOF
 
-cat $BASE/../banner.txt
+clear
 fi
