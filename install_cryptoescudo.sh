@@ -34,13 +34,13 @@ sudo chmod +x $DAEMONDEBUG
 
 # Kill cryptoescudo daemon
 sudo tee "$DAEMONDEKILL" > /dev/null <<EOF
-ps -eaf | grep -i cryptoescudod | awk '{print $2}' | xargs kill -15
+pkill -15 -f 'cryptoescudo'
 EOF
 sudo chmod +x $DAEMONDEKILL
 
 # Restart cryptoescudo daemon
 sudo tee "$DAEMONRESTART" > /dev/null <<EOF
-ps -eaf | grep -i cryptoescudod | awk '{print $2}' | xargs kill -15
+./kill_daemon.sh
 ./start_daemon.sh
 EOF
 sudo chmod +x $DAEMONRESTART
