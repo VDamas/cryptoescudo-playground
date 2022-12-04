@@ -4,7 +4,7 @@ tasks:
     init: chmod +x ./install_cryptoescudo.sh && ./install_cryptoescudo.sh && cd cryptoescudo
     command: cryptoescudod --datadir=/workspace/cryptoescudo-playground/cryptoescudo/data/ --daemon
   - name: debug.log
-    command: while true; do tail -f data/debug.log ; sleep 5; done;
+    command: while true; do tail -f cryptoescudo/data/debug.log ; sleep 5; done;
     openMode: split-right    
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
