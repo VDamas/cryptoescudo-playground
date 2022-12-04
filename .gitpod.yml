@@ -2,7 +2,7 @@
 tasks:
   - name: main
     init: chmod +x ./install_cryptoescudo.sh && ./install_cryptoescudo.sh
-    command: cryptoescudod --datadir=/workspace/cryptoescudo-playground/cryptoescudo/data/ --daemon && cd cryptoescudo
+    command: cryptoescudo/cryptoescudod --datadir=/workspace/cryptoescudo-playground/cryptoescudo/data/ --daemon && cd cryptoescudo
   - name: debug.log
     command: while true; do tail -f cryptoescudo/data/debug.log ; sleep 5; done;
     openMode: split-right    
