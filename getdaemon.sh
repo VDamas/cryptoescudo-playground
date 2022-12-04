@@ -14,13 +14,13 @@ else
     
     # Create cryptoescudo.conf
     rpcpass=$(openssl rand -hex 32) # generate pass
-    sudo tee "$DAEMONCONF" > /dev/null <<EOF
-    rpcuser=cryptoescudorpc
-    rpcpassword=$rpcpass
-    rpcport=61142
-    rpcallowip=127.0.0.1
-    server=1
-    listen=1
-    txindex=1
-    EOF
+sudo tee "$DAEMONCONF" > /dev/null <<EOF
+rpcuser=cryptoescudorpc
+rpcpassword=$rpcpass
+rpcport=61142
+rpcallowip=127.0.0.1
+server=1
+listen=1
+txindex=1
+EOF
 fi
