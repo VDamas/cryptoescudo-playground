@@ -75,6 +75,9 @@ rm -Rf data/blocks/ data/chainstate/ data/database/
 # extract
 tar -xf cryptoescudo.tar.gz
 
+# move tmp
+mv cryptoescudo.tar.gz ../tmp
+
 ./start_daemon.sh
 
 EOF
