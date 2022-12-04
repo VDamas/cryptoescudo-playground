@@ -19,19 +19,19 @@ else
   
     # Create cryptoescudo daemon script
 sudo tee "$DAEMONSTART" > /dev/null <<EOF
-$cescpath/cryptoescudod -datadir=$DAEMONDATA -daemon
+$DAEMON -datadir=$DAEMONDATA -daemon
 EOF
 sudo chmod +x $DAEMONSTART
 
 # Create cryptoescudo debug script
 sudo tee "$cescdebugscript" > /dev/null <<EOF
-tail -f $cescdatapath/debug.log
+tail -f $DAEMONDATA/debug.log
 EOF
 sudo chmod +x $cescdebugscript
 
 # Create cryptoescudo query script
 sudo tee "$DAEMONQUERY" > /dev/null <<EOF
-$cescpath/cryptoescudod -datadir=$DAEMONDATA \$1 \$2 \$3
+$DAEMON -datadir=$DAEMONDATA \$1 \$2 \$3
 EOF
 sudo chmod +x $DAEMONQUERY
     
