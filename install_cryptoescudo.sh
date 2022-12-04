@@ -22,6 +22,7 @@ else
   
     # Create cryptoescudo daemon script
 sudo tee "$DAEMONSTART" > /dev/null <<EOF
+cd $BASE
 $DAEMON -datadir=$DAEMONDATA -daemon
 EOF
 sudo chmod +x $DAEMONSTART
@@ -40,6 +41,7 @@ sudo chmod +x $DAEMONDEKILL
 
 # Restart cryptoescudo daemon
 sudo tee "$DAEMONRESTART" > /dev/null <<EOF
+cd $BASE
 ./kill_daemon.sh
 ./start_daemon.sh
 EOF
