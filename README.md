@@ -1,9 +1,12 @@
 # Cryptoescudo daemon test environment
 Gitpod for testing cryptoescudo daemon<br/>
-Creates basic scripts (start, stop, restart, update chain) to manage and query cryptoescudo daemon:
-start_daemon.sh 
-kill_daemon.sh 
-restart_daemon.sh 
-cesc_debug.sh 
-cesc_query.sh 
-update_chain.sh
+Creates basic scripts (start, stop, restart, update chain) to manage and query cryptoescudo daemon:   
+* start_daemon    
+* kill_daemon   
+* restart_daemon      
+* cesc_debug   
+* cesc_query (eg. cesc_query.sh getinfo)
+* update_chain (updates from the latest chain data uploaded to google drive)
+<br><br>
+Build !!!
+
