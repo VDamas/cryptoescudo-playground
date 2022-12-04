@@ -6,6 +6,7 @@ if [ -f "$DAEMON" ]; then
 else
     mkdir tmp
     mkdir cryptoescudo
+    mkdir cryptoescudo/data
     cd tmp
     wget http://cryptoescudo.pt/download/01030000/linux/cryptoescudo-1.3.0.0-linux.zip
     unzip -o cryptoescudo-1.3.0.0-linux.zip -d ./cryptoescudo
