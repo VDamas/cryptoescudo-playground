@@ -1,4 +1,9 @@
 # Cryptoescudo daemon test environment
+
+ <img src="https://www.cryptoescudo.pt/images/logo.png" width="200">
+ 
+ [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/vdamas/cryptoescudo-playground)
+ 
 Gitpod for testing cryptoescudo daemon<br/>
 Basic scripts already added (start, stop, restart, update chain) to manage and query cryptoescudo daemon:   
 * start_daemon    
