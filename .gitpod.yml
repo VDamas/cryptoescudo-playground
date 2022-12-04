@@ -2,7 +2,7 @@
 tasks:
   - name: cryptoescudod
     init: chmod +x ./getdaemon.sh && ./getdaemon.sh
-    command: cryptoescudo/cryptoescudod -datadir=data/ -daemon
+    command: cd cryptoescudo && ./cryptoescudod -daemon
   - name: debug.log
     command: tail cryptoescudod/data/debug.log
     openMode: split-right    
