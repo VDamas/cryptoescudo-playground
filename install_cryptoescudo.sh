@@ -50,14 +50,14 @@ EOF
 sudo chmod +x $DAEMONRESTART
 
 # Create cryptoescudo query script
-sudo tee "$DAEMONQUERY" > /dev/null <<'EOF'
+sudo tee "$DAEMONQUERY" > /dev/null <<EOF
 $DAEMON -datadir=$DAEMONDATA \$1 \$2 \$3
 EOF
 sudo chmod +x $DAEMONQUERY
 
 # Download chain up-to-date
 
-sudo tee "$DAEMONCHAINUPD" > /dev/null <<EOF
+sudo tee "$DAEMONCHAINUPD" > /dev/null <<'EOF'
 cd $DAEMONBASE
 
 # download
