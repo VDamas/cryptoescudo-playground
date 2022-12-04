@@ -64,4 +64,6 @@ server=1
 listen=1
 txindex=1
 EOF
+
+cat $BASE/../banner.txt
 fi
