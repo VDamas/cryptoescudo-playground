@@ -4,6 +4,9 @@ DAEMON=$BASE/cryptoescudod
 DAEMONDATA=$BASE/data
 DAEMONCONF=$DAEMONDATA/cryptoescudo.conf
 DAEMONSTART=$BASE/start_daemon.sh
+DAEMONDEBUG=$BASE/cesc_debug.sh
+DAEMONRESTART=$BASE/restart_daemon.sh
+DAEMONDEKILL=$BASE/kill_daemon.sh
 DAEMONQUERY=$BASE/cesc_query.sh
 if [ -f "$DAEMON" ]; then
     echo "$DAEMON exists."
@@ -24,10 +27,23 @@ EOF
 sudo chmod +x $DAEMONSTART
 
 # Create cryptoescudo debug script
-sudo tee "$cescdebugscript" > /dev/null <<EOF
+sudo tee "$DAEMONDEBUG" > /dev/null <<EOF
 tail -f $DAEMONDATA/debug.log
 EOF
-sudo chmod +x $cescdebugscript
+sudo chmod +x $DAEMONDEBUG
+
+# Kill cryptoescudo daemon
+sudo tee "$DAEMONDEKILL" > /dev/null <<EOF
+ps -eaf | grep -i cryptoescudod | awk '{print $2}' | xargs kill -15
+EOF
+sudo chmod +x $DAEMONDEKILL
+
+# Restart cryptoescudo daemon
+sudo tee "$DAEMONRESTART" > /dev/null <<EOF
+ps -eaf | grep -i cryptoescudod | awk '{print $2}' | xargs kill -15
+./start_daemon.sh
+EOF
+sudo chmod +x $DAEMONRESTART
 
 # Create cryptoescudo query script
 sudo tee "$DAEMONQUERY" > /dev/null <<EOF
