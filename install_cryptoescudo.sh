@@ -1,20 +1,22 @@
 #!/bin/sh
-BASE=/workspace/cryptoescudo-playground/cryptoescudo
-DAEMON=$BASE/cryptoescudod
-DAEMONDATA=$BASE/data
+BASE=/workspace/cryptoescudo-playground
+DAEMONBASE=$BASE/cryptoescudo
+DAEMON=$DAEMONBASE/cryptoescudod
+DAEMONDATA=$DAEMONBASE/data
 DAEMONCONF=$DAEMONDATA/cryptoescudo.conf
-DAEMONSTART=$BASE/start_daemon.sh
-DAEMONDEBUG=$BASE/cesc_debug.sh
-DAEMONRESTART=$BASE/restart_daemon.sh
-DAEMONDEKILL=$BASE/kill_daemon.sh
-DAEMONQUERY=$BASE/cesc_query.sh
+DAEMONSTART=$DAEMONBASE/start_daemon.sh
+DAEMONDEBUG=$DAEMONBASE/cesc_debug.sh
+DAEMONRESTART=$DAEMONBASE/restart_daemon.sh
+DAEMONDEKILL=$DAEMONBASE/kill_daemon.sh
+DAEMONQUERY=$DAEMONBASE/cesc_query.sh
+DAEMONCHAINUPD=$DAEMONBASE/update_chain.sh
 if [ -f "$DAEMON" ]; then
     echo "$DAEMON exists."
 else
-    mkdir tmp
+    mkdir $BASE/tmp
     mkdir cryptoescudo
     mkdir cryptoescudo/data
-    cd tmp
+    cd $BASE/tmp
     wget http://cryptoescudo.pt/download/01030000/linux/cryptoescudo-1.3.0.0-linux.zip
     unzip -o cryptoescudo-1.3.0.0-linux.zip -d ./cryptoescudo
     cp -R cryptoescudo/cryptoescudo-1.3.0.0-linux/64/* ../cryptoescudo
@@ -22,7 +24,7 @@ else
   
     # Create cryptoescudo daemon script
 sudo tee "$DAEMONSTART" > /dev/null <<EOF
-cd $BASE
+cd $BASE/tmp
 $DAEMON -datadir=$DAEMONDATA -daemon
 EOF
 sudo chmod +x $DAEMONSTART
@@ -41,7 +43,7 @@ sudo chmod +x $DAEMONDEKILL
 
 # Restart cryptoescudo daemon
 sudo tee "$DAEMONRESTART" > /dev/null <<EOF
-cd $BASE
+cd $DAEMONBASE
 ./kill_daemon.sh
 ./start_daemon.sh
 EOF
@@ -52,9 +54,29 @@ sudo tee "$DAEMONQUERY" > /dev/null <<EOF
 $DAEMON -datadir=$DAEMONDATA \$1 \$2 \$3
 EOF
 sudo chmod +x $DAEMONQUERY
+
+# Download chain up-to-date
+sudo tee "$DAEMONCHAINUPD" > /dev/null <<EOF
+cd $DAEMONBASE
+
+./kill_daemon.sh
+
+wget -O cryptoescudo.tar.gz  https://cryptoescudo.work/getchain --no-check-certificate
+
+# remove old data
+rm -Rf data/blocks/ data/chainstate/ data/database/
+
+# extract
+tar -xf cryptoescudo.tar.gz
+
+./start_daemon.sh
+
+EOF
+sudo chmod +x $DAEMONCHAINUPD
+
     
-    # Create cryptoescudo.conf
-    rpcpass=$(openssl rand -hex 32) # generate pass
+# Create cryptoescudo.conf
+rpcpass=$(openssl rand -hex 32) # generate pass
 sudo tee "$DAEMONCONF" > /dev/null <<EOF
 rpcuser=cryptoescudorpc
 rpcpassword=$rpcpass
