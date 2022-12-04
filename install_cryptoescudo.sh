@@ -61,7 +61,9 @@ sudo tee "$DAEMONCHAINUPD" > /dev/null <<EOF
 cd $DAEMONBASE
 
 # download
-wget -O cryptoescudo.tar.gz  https://cryptoescudo.work/getchain --no-check-certificate
+#wget -O cryptoescudo.tar.gz  https://cryptoescudo.work/getchain --no-check-certificate
+SHAREID=1tlrB2WCa4ijeUan-hRc-kaRyZbER1k8n
+wget -O cryptoescudo.tar.gz 'https://docs.google.com/uc?export=download&id=$($SHAREID)' --no-check-certificate  
 
 ./kill_daemon.sh
 
