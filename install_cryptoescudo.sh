@@ -35,7 +35,7 @@ sudo chmod +x $DAEMONDEBUG
 
 # Kill cryptoescudo daemon
 sudo tee "$DAEMONDEKILL" > /dev/null <<EOF
-pkill -15 -f 'cryptoescudo'
+pkill -9 -f 'cryptoescudo'
 EOF
 sudo chmod +x $DAEMONDEKILL
 
@@ -66,4 +66,5 @@ txindex=1
 EOF
 
 clear
+cd cryptoescudo
 fi
