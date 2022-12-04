@@ -58,7 +58,7 @@ sudo chmod +x $DAEMONQUERY
 # Download chain up-to-date
 
 sudo tee "$DAEMONCHAINUPD" > /dev/null <<'EOF'
-cd $DAEMONBASE
+cd /workspace/cryptoescudo-playground/cryptoescudo
 
 # download
 #wget -O cryptoescudo.tar.gz  https://cryptoescudo.work/getchain --no-check-certificate
