@@ -2,8 +2,8 @@
 
  <img src="https://www.cryptoescudo.pt/images/logo.png" width="200">
  
- [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vdamas/cryptoescudo-playground)
- 
+ <a href="https://gitpod.io/#https://github.com/vdamas/cryptoescudo-playground" target="_blank"><img src="https://gitpod.io/button/open-in-gitpod.svg"></a>
+  
 Gitpod for testing cryptoescudo daemon<br/>
 Basic scripts already added (start, stop, restart, update chain) to manage and query cryptoescudo daemon:   
 * start_daemon    
