@@ -60,7 +60,11 @@ sudo chmod +x $DAEMONQUERY
 sudo tee "$DAEMONCHAINUPD" > /dev/null <<'EOF'
 cd /workspace/cryptoescudo-playground/cryptoescudo
 
-# download
+# download from cryptoescudo.work (slower, but updated at 8am every day)
+#wget https://letsencrypt.org/certs/lets-encrypt-r3.pem
+#wget https://cryptoescudo.work/getchain --ca-certificate=lets-encrypt-r3.pem
+
+# download from google drive
 SHAREID=1tlrB2WCa4ijeUan-hRc-kaRyZbER1k8n
 CONFIRM="`wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies 'https://docs.google.com/uc?export=download&id=$SHAREID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p'`"
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$SHAREID" -O cryptoescudo.tar.gz 
