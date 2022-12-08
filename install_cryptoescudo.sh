@@ -61,7 +61,7 @@ sudo tee "$DAEMONCHAINUPD" > /dev/null <<'EOF'
 cd /workspace/cryptoescudo-playground/cryptoescudo
 
 PS3="Choose chain download source: "
-options=('Cryptoescudo.work(slower / up-to-date)' 'Google Drive (faster / not up-to-date)')
+options=('Cryptoescudo.work (slower / up-to-date)' 'Google Drive (faster / maybe up-to-date)')
 select opt in "${options[@]}"
 do
     case $opt in
