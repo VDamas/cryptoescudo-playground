@@ -68,7 +68,7 @@ do
         "Cryptoescudo.work (slower / up-to-date)")
             # download from cryptoescudo.work (slower, but updated at 8am every day)
             wget https://letsencrypt.org/certs/lets-encrypt-r3.pem
-            wget https://cryptoescudo.work/getchain --ca-certificate=lets-encrypt-r3.pem
+            wget https://cryptoescudo.work/getchain --ca-certificate=lets-encrypt-r3.pem  -O cryptoescudo.tar.gz 
 	    break
             ;;
         "Google Drive (faster / maybe up-to-date)")
