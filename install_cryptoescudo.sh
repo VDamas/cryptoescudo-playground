@@ -73,7 +73,7 @@ do
             ;;
         "Google Drive (faster / maybe up-to-date)")
             # download from google drive
-            SHAREID=1tlrB2WCa4ijeUan-hRc-kaRyZbER1k8n
+            SHAREID=19e-QafJbA1NIMpf8cQ_bC8lJRXVBnGSn
             CONFIRM="`wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies 'https://docs.google.com/uc?export=download&id=$SHAREID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p'`"
             wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$SHAREID" -O cryptoescudo.tar.gz 
             rm -rf /tmp/cookies.txt
